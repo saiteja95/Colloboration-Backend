@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-app="myApp">
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<div ng-controller="ChatController" class="container" >
+	
+	
+	
+			<form ng-submit="addMessage()" name="messageForm">
+			<input type="text" placeholder="Compose a new message..."
+				ng-model="message" /> <br />
+			<br />
+			<div class="info">
+				<span class="count" ng-bind="max - message.length"
+					ng-class="{danger: message.length > max}">140</span>
+				<button ng-disabled="message.length > max || message.length === 0">Send</button>
+			</div>
+		</form>
+    
+		<p ng-repeat="message in messages | orderBy:'time':true"
+			class="message">
+			<time>{{message.time | date:'HH:mm'}}</time>
+			<span ng-class="{self: message.self}">{{message.message}}</span>
+			  <span ng-class="{self: username.self}">{{message.username}}</span>
+		</p>
+	</div>
+	
+
+	<style>
+	.container{
+	background-image:url(resources/images/BlogImage_Chat.jpg);
+	background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    background-size:1500px 800px;
+	}
+	
+	input[type="text"]{
+    height: 80px;
+    background-image:url(resources/images/chat1.jpg);
+	font-size: 18px;
+	margin-bottom: 20px;
+	padding:15px 25px;
+	background-position:center;
+	background-color: white;
+    width: 500px;
+    border: 10px skyblue;
+    padding: 25px;
+    margin: 25px;
+    left: 20px!important;
+	right: auto!important;
+    
+	}
+	
+	</style>
+</body>
+</html>
